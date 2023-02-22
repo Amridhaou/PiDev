@@ -1,0 +1,38 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Certificat{% endblock %}
+
+{% block body %}
+    <h1>Certificat {{ certificat.numCertificat }}</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Num_Certificat</th>
+                <td>{{ certificat.NumCertificat }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ certificat.Nom }}</td>
+            </tr>
+            <tr>
+                <th>Identifiant</th>
+                <td>{{ certificat.Identifiant }}</td>
+            </tr>
+            <tr>
+                <th>Date_Examen</th>
+                <td>{{ certificat.DateExamen ? certificat.DateExamen|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Resultat</th>
+                <td>{{ certificat.Resultat ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('certificat_index') }}"><h5 class="text-info"><i class="bi-list"></i> Liste des certificats</h5></a>
+
+    <a href="{{ path('certificat_edit', {'Num_Certificat': certificat.NumCertificat}) }}"><h5 class="text-warning"><i class="bi-pencil"> </i>Modifier Certificat {{ certificat.NumCertificat }}</h5></a>
+
+    {{ include('certificat/delete.html.twig') }}
+{% endblock %}
