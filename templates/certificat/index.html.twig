@@ -1,0 +1,109 @@
+{% include 'front.html.twig' %}
+
+{% block title %}Certificat index{% endblock %}
+
+{% block body %}
+    <h1>Cours index</h1>
+    <div class="container-fluid py-3">
+        <div class="row">
+            <div class="col-12">
+                <div class="card mb-4">
+                    <div class="card-header d-sm-flex align-items-center justify-content-between">
+                        <h6>Certificats
+                            <input id="search_input" type="text" name="search_input" placeholder="Recherche ..." style="margin: 1em 0">
+                        </h6>
+                        <a href="{{ path('certificat_new') }}" class=" text-white bg-success mx-3 p-2 rounded-3">Create
+                            new</a>
+                    </div>
+                    <div class="card-body px-0 pt-0 pb-2">
+                        <div class="table-responsive p-0">
+                            <table class="table align-items-center mb-0" id="myTable">
+                                <thead>
+                                <tr>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Bénéficaire
+                                    </th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                        Numéro
+                                    </th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Résultat
+                                    </th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Cours
+                                    </th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Date Examen
+                                    </th>
+                                    <th class="text-secondary opacity-7"></th>
+                                    <th class="text-secondary opacity-7"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for certificat in certificats %}
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex px-2 py-1">
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="mb-0 text-sm">{{ certificat.Nom }}</h6>
+                                                    <p class="text-xs text-secondary mb-0">{{ certificat.identifiant }}</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <p class="text-xs font-weight-bold mb-0">{{ certificat.numCertificat }}</p>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex px-2 py-1">
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="mb-0 text-sm">{{ certificat.resultat?'Succès':'Echec' }}</h6>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex px-2 py-1">
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="mb-0 text-sm">{{ certificat.cours.nomination }}</h6>
+                                                    <p class="text-xs text-secondary mb-0">{{ certificat.cours.codeCours }}</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <span class="text-secondary text-xs font-weight-bold">{{ certificat.dateExamen|date('d/m/Y') }}</span>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <a href="{{ path('pdf_generator', {'Num_Certificat': certificat.NumCertificat}) }}">
+                                                <h5><i class="bi-printer-fill text-info"></i></h5></a>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <a href="{{ path('certificat_show', {'Num_Certificat': certificat.NumCertificat}) }}">
+                                                <h5><i class="bi-eye text-info text-s"></i></h5></a>
+                                            <a href="{{ path('certificat_edit', {'Num_Certificat': certificat.NumCertificat}) }}">
+                                                <h5><i class="bi-pencil-square text-warning"></i></h5></a>
+                                        </td>
+                                    </tr>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="5">no records found</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#search_input").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tbody tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+{% endblock %}

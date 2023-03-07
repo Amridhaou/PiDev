@@ -1,0 +1,11 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Modifier Certificat{% endblock %}
+
+{% block body %}
+    <h1>Modifier Certificat</h1>
+
+    {{ include('certificat/form.html.twig', {'button_label': 'Update'}) }}
+
+    {{ include('certificat/delete.html.twig') }}
+{% endblock %}

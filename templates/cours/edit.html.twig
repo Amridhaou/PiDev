@@ -1,0 +1,11 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Modifier Cours{% endblock %}
+
+{% block body %}
+    <h1>Modifier Cours</h1>
+
+    {{ include('cours/form.html.twig', {'button_label': 'Update'}) }}
+
+    {{ include('cours/delete.html.twig') }}
+{% endblock %}

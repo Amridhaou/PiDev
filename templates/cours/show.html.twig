@@ -1,0 +1,56 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Cours{% endblock %}
+
+{% block body %}
+    <h1>Cours {{ cour.nomination }}</h1>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>Code</th>
+            <td>{{ cour.CodeCours }}</td>
+        </tr>
+        <tr>
+            <th>Responsable</th>
+            <td>{{ cour.tuteur ? cour.tuteur : '' }} || {{ cour.contact ? cour.contact : '' }}</td>
+        </tr>
+        <tr>
+            <th>Matière</th>
+            <td>{{ cour.Matiere ? cour.Matiere : '' }}</td>
+        </tr>
+        <tr>
+            <th>Sujet</th>
+            <td>{{ cour.Type ? cour.Type : '' }}</td>
+        </tr>
+        <tr>
+            <th>Duree</th>
+            <td>{{ cour.Duree ? cour.Duree : '' }}</td>
+        </tr>
+        <tr>
+            <th>Support</th>
+            <td>{{ cour.Support ? cour.Support : '' }}</td>
+        </tr>
+        <tr>
+            <th>Date Publication</th>
+            <td>{{ cour.DatePublication|date('d/m/Y') }}</td>
+        </tr>
+        <tr>
+            <th>Support</th>
+            <td>
+                <video controls>
+                    <source src="{{ asset('/uploads/videos/'~cour.support) }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('cours_index') }}"><h5 class="text-info"><i class="bi-list"></i> Liste des cours</h5></a>
+
+    <a href="{{ path('cours_edit', {'CodeCours': cour.codeCours}) }}"><h5 class="text-warning"><i
+                    class="bi-pencil"> </i>Modifier {{ cour.nomination }}</h5></a>
+
+    {{ include('cours/delete.html.twig') }}
+{% endblock %}
