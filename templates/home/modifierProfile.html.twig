@@ -1,0 +1,73 @@
+{% extends 'baseBack.html.twig' %}
+{% block title %}Register{% endblock %}
+{% block body %}
+  <body class="bg-gradient-primary">
+    <div class="container">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                    <div class="col-lg-7">
+                        <div class="p-5">
+
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Update your profile</h1>
+                            </div>
+
+                            <div style="width: 150px;margin-left: 190px;background-color: #28a745"  class="btn btn-primary btn-user btn-block">
+                                <a href="{{ path('modifierImage',{'id':app.user.id}) }}" type="submit"  >Update Image</a>
+                            </div>
+
+                                {{ form_start(form) }}
+
+                                <div class="form-group">
+                                    {{ form_row(form.nom ,{'attr':{'class':'form-control form-control-user'}}) }}
+                                </div>
+
+                                <div class="form-group">
+                                    {{ form_row(form.prenom ,{'attr':{'class':'form-control form-control-user'}}) }}
+                                </div>
+
+                                <div class="form-group">
+                                    {{ form_row(form.speciality ,{'attr':{'class':'form-control form-control-user'}}) }}
+                                </div>
+
+                                <div class="form-group">
+                                    {{ form_row(form.numero ,{'attr':{'class':'form-control form-control-user'}}) }}
+                                </div>
+
+                                   <div style="width: 100px" >
+                                       <button  type="submit"  class="btn btn-primary btn-user btn-block">update</button>
+                                   </div>
+                                {{ form_end(form) }}
+                            <hr>
+                            <div class="text-center">
+                                <a style="width: 200px;margin-left: 170px ; background-color: red" href="{{path('deleteAccount',{'id':app.user.id})}}" class="btn btn-primary btn-user btn-block">
+                                    Delete Account
+                                </a>
+                             </div>
+                            <div class="text-center">
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+
+  </body>
+
+{% endblock %}

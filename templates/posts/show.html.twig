@@ -1,0 +1,35 @@
+{% extends 'baseFront.html.twig' %}
+
+{% block title %}Cours{% endblock %}
+
+{% block body %}
+    <h2>Post {{ post.Titre }}</h2>
+    <h6>Post {{ post.Titre }}</h6>
+    <h1>Post {{ post.Titre }}</h1>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>Description</th>
+            <td>
+                {{ post.createdat |date('d-m-Y') }}
+                <br/>
+                {{ post.description }}
+            </td>
+        </tr>
+        <tr>
+            <th>Support</th>
+            <td>
+                <img src="{{ asset('/uploads/images/'~post.contenu) }}" alt="no image"/>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('posts_index') }}"><h5 class="text-info"><i class="bi-list"></i> Liste des postes</h5></a>
+
+    <a href="{{ path('posts_edit', {'id': post.id}) }}"><h5 class="text-warning"><i
+                    class="bi-pencil"> </i>Modifier {{ post.titre }}</h5></a>
+
+    {{ include('posts/delete.html.twig') }}
+{% endblock %}

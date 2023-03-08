@@ -1,0 +1,43 @@
+{% extends '/backOffice/home.html.twig' %}
+
+{% block title %}Reclamation index
+{% endblock %}
+
+{% block content %}
+	<h1>Reclamation index</h1>
+
+	<table class="table">
+		<thead>
+			<tr>
+
+				<th>Description</th>
+				<th>Date</th>
+				<th>Type</th>
+				<th>Etat</th>
+				<th>actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for reclamation in reclamations %}
+				<tr>
+					<td>{{ reclamation.description }}</td>
+					<td>{{ reclamation.date ? reclamation.date|date('Y-m-d') : '' }}</td>
+					<td>{{ reclamation.type }}</td>
+
+
+					<td>{{ reclamation.etat}}</td>
+					<td>
+<a href="{{ path('app_reclamation_edit_status', {'id': reclamation.id}) }}">Resolve</a>
+
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="5">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+{% endblock %}
+

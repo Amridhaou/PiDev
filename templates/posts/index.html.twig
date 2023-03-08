@@ -1,0 +1,75 @@
+{% extends 'baseFront.html.twig' %}
+
+{% block title %}Cours index{% endblock %}
+
+{% block body %}
+    <h1>Posts</h1>
+    <div class="container-fluid py-3">
+        <div class="row">
+            <div class="col-12">
+                <div class="card mb-4">
+                    <div class="card-header d-sm-flex align-items-center justify-content-between">
+                        <h6>Posts</h6>
+                        <a href="{{ path('posts_new') }}" class=" text-white bg-success mx-3 p-2 rounded-3">Create new</a>
+                    </div>
+                    <div class="card-body px-0 pt-0 pb-2">
+                        <div class="table-responsive p-0">
+                            <table class="table align-items-center mb-0">
+                                <thead>
+                                <tr>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Titre
+                                    </th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                        Contenu
+                                    </th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Description
+                                    </th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Actions
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for post in posts %}
+                                <tr>
+                                    <td>
+                                        <div class="d-flex px-2 py-1">
+                                            <div class="d-flex flex-column justify-content-center">
+                                                <h6 class="mb-0 text-sm">{{ post.Titre }}</h6>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <p class="text-xs font-weight-bold mb-0">
+                                            <img src="{{ asset('/uploads/images/'~post.contenu) }}" alt="no image"/>
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex px-2 py-1">
+                                            <div class="d-flex flex-column justify-content-center">
+                                                <h6 class="mb-0 text-sm">{{ post.createdat |date('d-m-Y') }}</h6>
+                                                <p class="text-xs text-secondary mb-0">{{ post.description }}</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="align-middle text-center">
+                                        <a href="{{ path('posts_show', {'id': post.id}) }}"><h5><i class="bi-eye text-info text-s"></i></h5></a>
+                                        <a href="{{ path('posts_edit', {'id': post.id}) }}"><h5><i class="bi-pencil-square text-warning"></i></h5></a>
+                                    </td>
+                                </tr>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="5">no records found</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

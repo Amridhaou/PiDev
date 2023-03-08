@@ -22,7 +22,8 @@ class SendMailType extends AbstractType
 
             ->add('subject',TextType::class,[
                 'attr'=>[
-                    'placeholder'=>' entre le subject de ce mail'
+                    'placeholder'=>' entre le subject de ce mail',
+                    'class'=>'form-control'
                 ],
                 'constraints' => [
                     new NotBlank([
@@ -32,7 +33,8 @@ class SendMailType extends AbstractType
             ])
             ->add('message',TextareaType::class,[
                 'attr'=>[
-                    'placeholder'=>' ecrivez votre message avec votre clavier ou bien utiliser votre voie'
+                    'placeholder'=>' ecrivez votre message avec votre clavier ou bien utiliser votre voie',
+                    'class'=>'form-control'
                 ],
                 'constraints' => [
                     new NotBlank([

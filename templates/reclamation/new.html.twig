@@ -1,0 +1,14 @@
+{% extends 'baseFront.html.twig' %}
+
+{% block title %}New Reclamation{% endblock %}
+{% block body %}
+<h1>Cours index</h1>
+<div class="container-fluid py-3">
+    <h1>Create new Reclamation</h1 >
+
+    {{ include('reclamation/_form.html.twig') }}
+
+    <a href="{{ path('app_reclamation_index') }}">back to list</a>
+{% endblock %}
+    
+

@@ -1,0 +1,11 @@
+{% extends '/backOffice/home.html.twig' %}
+
+{% block title %}Modifier Cours{% endblock %}
+
+{% block body %}
+    <h1>Modifier Cours</h1>
+
+    {{ include('posts/form.html.twig', {'button_label': 'Update'}) }}
+
+    {{ include('posts/delete.html.twig') }}
+{% endblock %}

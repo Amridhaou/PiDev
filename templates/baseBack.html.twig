@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+
+            <meta charset="utf-8">
+
+
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+            <link href="{{ asset('backOffice/assets/vendor/fontawesome-free/css/all.min.css') }}"  rel="stylesheet" />
+            <link href="{{ asset('backOffice/assets/css/sb-admin-2.min.css') }}"  rel="stylesheet" />
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+            <script src="{{ asset('backOffice/assets/vendor/jquery/jquery.min.js') }}"></script>
+            <script src="{{ asset('backOffice/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+            <script src="{{ asset('backOffice/assets/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+            <script src="{{ asset('backOffice/assets/js/sb-admin-2.min.js') }}"></script>
+            <!-- Bootstrap core JavaScript-->
+        {% endblock %}
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+    </body>
+</html>

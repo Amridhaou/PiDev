@@ -1,8 +1,8 @@
-{% extends 'back.html.twig' %}
+{% extends '/backOffice/home.html.twig' %}
 
 {% block title %}Modifier Certificat{% endblock %}
 
-{% block body %}
+{% block content %}
     <h1>Modifier Certificat</h1>
 
     {{ include('certificat/form.html.twig', {'button_label': 'Update'}) }}

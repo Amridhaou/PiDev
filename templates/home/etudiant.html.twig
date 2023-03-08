@@ -1,0 +1,61 @@
+{% extends 'baseFront.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+    <body>
+
+    <main id="main">
+
+        <!-- ======= Breadcrumbs ======= -->
+        <section id="breadcrumbs" class="breadcrumbs">
+            <div class="container">
+
+                <div class="d-flex justify-content-between align-items-center">
+                    <ol>
+                        <li><a style="margin-left: 1215px" href="{{ path('modifierProfile',{'id':app.user.id}) }}">Edit profile</a></li>
+
+                    </ol>
+                </div>
+
+            </div>
+        </section><!-- End Breadcrumbs -->
+        <!-- ======= Portfolio Details Section ======= -->
+        <section id="portfolio-details" class="portfolio-details">
+            <div class="container" data-aos="fade-up">
+
+                <div class="row gy-4">
+                    <div  class="col-lg-8">
+                        <div  style="margin-left: 450px" class="portfolio-details-slider swiper">
+                            <div class="swiper-wrapper align-items-center">
+                                <div class="swiper-slide">
+                                    <img src="{{ asset('/uploads/'~app.user.image) }}" alt="">
+                                </div>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                        <div class="portfolio-info" style="width: 1000px;margin-left: 170px">
+                            <h3>Professeur</h3>
+                            <ul>
+                                <li><strong>Name</strong>: {{ app.user.nom }}-{{ app.user.prenom }}</li>
+                                <li><strong>Email</strong>: {{ app.user.email }}</li>
+                                <li><strong>Numero</strong>: {{ app.user.numero }}</li>
+                                <li><strong>Project date</strong>: 01 March, 2020</li>
+                                <li><strong>Project URL</strong>: <a href="#">www.example.com</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section><!-- End Portfolio Details Section -->
+
+    </main><!-- End #main -->
+
+    <!-- ======= Footer ======= -->
+
+
+    </body>
+{% endblock %}
